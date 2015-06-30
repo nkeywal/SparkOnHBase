@@ -228,9 +228,10 @@ class HBaseContext(@transient sc: SparkContext,
 
   def logCredInformation[T] (credentials2:Credentials) {
     logInfo("credentials:" + credentials2);
-    for (a <- 0 until credentials2.getAllSecretKeys.size()) {
-      logInfo("getAllSecretKeys:" + a + ":" + credentials2.getAllSecretKeys.get(a));
-    }
+// credentials2.getAllSecretKeys is not there when you use Apache HBase instead of CDH
+//    for (a <- 0 until credentials2.getAllSecretKeys.size()) {
+//      logInfo("getAllSecretKeys:" + a + ":" + credentials2.getAllSecretKeys.get(a));
+//    }
     val it = credentials2.getAllTokens.iterator();
     while (it.hasNext) {
       logInfo("getAllTokens:" + it.next());
